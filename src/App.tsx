@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { contract } from './web3config';
-
+import './App.css'; 
 interface CertificateData {
   0: boolean;  // isValid - Note the index notation for tuple elements
   1: string;   // issuer
@@ -40,20 +40,24 @@ function App() {
   };
 
   return (
-    <div>
-      <h1>Certificate Verification</h1>
-      <input
-        type="text"
-        value={certId}
-        onChange={(e) => setCertId(e.target.value)}
-        placeholder="Enter certificate ID"
-      />
-      <button onClick={handleVerify} disabled={isLoading}>
-        {isLoading ? 'Verifying...' : 'Verify'}
-      </button>
-      <p>{verificationResult}</p>
+    <div className="container">
+        <h1>Certificate Verification</h1>
+
+        <input 
+            type="text" 
+            value={certId}
+            onChange={(e) => setCertId(e.target.value)} 
+            placeholder="Enter certificate ID" 
+        />
+
+        <button onClick={handleVerify} disabled={isLoading}>
+            {isLoading ? 'Verifying...' : 'Verify'}
+        </button>
+
+        <p>{verificationResult}</p>
     </div>
-  );
+);
+
 }
 
 export default App;
